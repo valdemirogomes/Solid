@@ -1,0 +1,36 @@
+package solid_lsp_v1;
+
+public class Gerente extends Funcionario implements BonusAplicavel {
+
+	private float bonus;
+
+	public Gerente(float salario, String cargo, String nome, float bonus) {
+		super(salario, cargo, nome);
+		this.bonus = bonus;
+	}
+
+	public float getBonus() {
+		return bonus;
+	}
+
+	public void setBonus(float bonus) {
+		this.bonus = bonus;
+	}
+
+	// Método Calcular Salário - Classe Funcionario
+	@Override
+	public float calcularSalario() {
+		return this.getSalario() + this.calcularBonus();
+	}
+
+	@Override
+	float calcularComissao() {
+		return 0;
+	}
+
+	// Método Calcular Bônus - Interface BonusAplicavel
+	@Override
+	public float calcularBonus() {
+		return this.getSalario() * this.getBonus();
+	}
+}
